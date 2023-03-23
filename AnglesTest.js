@@ -24,14 +24,13 @@ const resolutionDist = (sideA, sideB, sideC) => {
 
 const timeNspeed = (dInt, distance, totalRot) => {
     while (true){
-        let speed = (dInt/0.0233);
         points++;
         deg += dInt;
-        time += ((distance/343) * 1000) * 2;
+        time += (((distance/343) * 1000) * 2)/1000;
+        const speed = ((360/time)*60)/360;
         const tabby = [
-            {"degree": dInt, "time (s)": time/1000, "points": points, "current deg": deg, "speed (d/s)": speed}
+            {"Degree Int": dInt, "Time (s)": time, "Num Of Points": points, "Curr Deg": deg, "RPM": speed}
         ];
-        
         
         if (deg > totalRot){
             console.table(tabby);
@@ -47,4 +46,4 @@ const oneForAll = (length, res, totalRot) => {
 //const resolution = resolutionDist(4, 4, 0.01); // in meters aka 0.01 = 1 cm
 //timeNspeed(resolution, 4) // input is given resolution if object is 4 meters away (400cm)
 
-oneForAll(4,.05, 360)
+oneForAll(0.3048,.01, 360);
